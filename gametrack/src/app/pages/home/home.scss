@@ -1,0 +1,151 @@
+.home-container {
+  min-height: 100vh;
+  background-color: #f4f6f9;
+  padding: 2rem;
+}
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    mat-icon {
+      font-size: 32px;
+      width: 32px;
+      height: 32px;
+    }
+
+    h2 {
+      margin: 0;
+      color: #0f172a;
+      font-weight: 600;
+    }
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6rem;
+  color: #64748b;
+  gap: 12px;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  margin-top: 5rem;
+  text-align: center;
+
+  mat-icon {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+  }
+}
+
+/* Grid Responsivo de Cards */
+.jogos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.jogo-card {
+  background: #ffffff;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #e2e8f0;
+  padding: 12px;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.jogo-title {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #0f172a;
+}
+
+.jogo-subtitle {
+  font-size: 13px !important;
+  color: #64748b !important;
+  margin-top: 4px;
+}
+
+.jogo-body {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nota-container {
+  .label-nota {
+    font-size: 13px;
+    color: #64748b;
+    margin-right: 4px;
+  }
+  .valor-nota {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+  }
+}
+
+/* Custom Badges para o Status */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+
+  &[data-status="jogando"] {
+    background-color: #e3f2fd;
+    color: #1565c0;
+  }
+  &[data-status="concluído"] {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+  &[data-status="na fila"] {
+    background-color: #fef3c7;
+    color: #d97706;
+  }
+  &[data-status="abandonado"] {
+    background-color: #fee2e2;
+    color: #c2410c;
+  }
+}
+
+.jogo-actions {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 8px !important;
+}

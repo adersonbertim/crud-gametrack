@@ -1,0 +1,50 @@
+<div class="form-container">
+  <mat-card class="form-card">
+    <h2 class="form-title">{{ id ? 'Editar Jogo' : 'Novo Jogo' }}</h2>
+    
+    <form [formGroup]="form" class="jogo-form">
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nome do Jogo</mat-label>
+        <input matInput placeholder="Ex: The Witcher 3" formControlName="nome" />
+        <mat-error>O nome é obrigatório.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Plataforma</mat-label>
+        <input matInput placeholder="Ex: PC, PS5, Xbox, Switch" formControlName="plataforma" />
+        <mat-error>A plataforma é obrigatória.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Gênero</mat-label>
+        <input matInput placeholder="Ex: RPG, Ação, Terror" formControlName="genero" />
+        <mat-error>O gênero é obrigatório.</mat-error>
+      </mat-form-field>
+
+      <div class="row-inputs">
+        <mat-form-field appearance="outline">
+          <mat-label>Nota (0 a 10)</mat-label>
+          <input matInput type="number" min="0" max="10" placeholder="10" formControlName="nota" />
+          <mat-error>Nota obrigatória (0-10).</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status">
+            @for (st of listaStatus; track st.value) {
+              <mat-option [value]="st.value">{{ st.viewValue }}</mat-option>
+            }
+          </mat-select>
+          <mat-error>O status é obrigatório.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="actions-row">
+        <button mat-stroked-button type="button" routerLink="/home">Cancelar</button>
+        <button mat-flat-button color="primary" type="button" (click)="salvarJogo()">Salvar Jogo</button>
+      </div>
+
+    </form>
+  </mat-card>
+</div>

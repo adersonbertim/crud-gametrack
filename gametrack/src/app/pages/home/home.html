@@ -1,0 +1,65 @@
+<div class="home-container">
+  <header class="home-header">
+    <div class="brand">
+      <mat-icon color="primary">sports_esports</mat-icon>
+      <h2>Minha Coleção</h2>
+    </div>
+    
+    <button mat-flat-button color="primary" (click)="novoJogo()">
+      <mat-icon>add</mat-icon>
+      Criar Novo
+    </button>
+  </header>
+
+  <main class="home-content">
+    
+    @if (carregando()) {
+      <div class="loading-container">
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Buscando seus jogos...</p>
+      </div>
+    } @else {
+      
+      @if (jogos.length === 0) {
+        <div class="empty-state">
+          <mat-icon>sports_esports</mat-icon>
+          <p>Sua lista está vazia por enquanto. Clique em "Criar Novo" para adicionar seu primeiro jogo!</p>
+        </div>
+      } @else {
+        
+        <div class="jogos-grid">
+          @for (jogo of jogos; track jogo.id) {
+            <mat-card class="jogo-card">
+              <mat-card-header>
+                <mat-card-title class="jogo-title">{{ jogo.nome }}</mat-card-title>
+                <mat-card-subtitle class="jogo-subtitle">{{ jogo.plataforma }} • {{ jogo.genero }}</mat-card-subtitle>
+              </mat-card-header>
+
+              <mat-card-content class="jogo-body">
+                <div class="nota-container">
+                  <span class="label-nota">Nota:</span>
+                  <span class="valor-nota">{{ jogo.nota }}/10</span>
+                </div>
+  
+                <span class="status-badge" [attr.data-status]="jogo.status.toLowerCase()">
+                  {{ jogo.status }}
+                </span>
+              </mat-card-content>
+
+              <mat-card-actions class="jogo-actions">
+                <button mat-icon-button color="primary" [routerLink]="['/home/editar', jogo.id]">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deletarJogo(jogo.id!)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          }
+        </div>
+
+      }
+    }
+
+  </main>
+</div>

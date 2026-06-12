@@ -1,0 +1,51 @@
+<div class="login-page">
+  <mat-card class="login-card">
+
+    <div class="brand-row">
+      <div class="brand-icon">
+        <mat-icon>sports_esports</mat-icon>
+      </div>
+      <span class="brand-name">GameLog</span>
+    </div>
+
+    <h1 class="login-title">Bem-vindo de volta</h1>
+    <p class="login-sub">Acesse sua coleção de jogos</p>
+
+    @if (erro) {
+      <div class="erro-banner">
+        <mat-icon>error_outline</mat-icon>
+        <span>{{ mensagemErro(erro) }}</span>
+      </div>
+    }
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>E-mail</mat-label>
+      <input matInput type="email" [(ngModel)]="usuario" placeholder="seu@email.com" />
+      <mat-icon matPrefix>mail</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Senha</mat-label>
+      <input matInput [type]="senhaVisivel ? 'text' : 'password'" [(ngModel)]="senha" placeholder="••••••••" />
+      <mat-icon matPrefix>lock</mat-icon>
+      <button mat-icon-button matSuffix (click)="senhaVisivel = !senhaVisivel" type="button">
+        <mat-icon>{{ senhaVisivel ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" class="btn-login" (click)="login()">
+      @if (carregando) {
+        <mat-spinner diameter="20" color="accent"></mat-spinner>
+      } @else {
+        Entrar
+      }
+    </button>
+
+    <mat-divider class="divider"></mat-divider>
+
+    <button mat-stroked-button class="btn-register" routerLink="/cadastrar">
+      Criar conta
+    </button>
+
+  </mat-card>
+</div>
